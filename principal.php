@@ -14,7 +14,7 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,7 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
 </head>
 
 <body>
+    <h1>Bem vindo, <?php echo $login ?></h1>
     <ul>
         <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
             <li><a href="lista_clientes.php">Lista Clientes</a></li>
