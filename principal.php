@@ -3,6 +3,14 @@ session_start(); // inicia a sessão
 include('conexao.php');
 
 $login = $_SESSION['login'];
+
+//obtendo o tipo de usuário do banco de dados
+$select_tipo_usuario = "SELECT id_tipo_usuario FROM login";
+
+$query_tipo_usuario = mysqli_query($conexao, $select_tipo_usuario);
+$dado_tipo_usuario = mysqli_fetch_assoc($query_tipo_usuario);
+
+$id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +22,19 @@ $login = $_SESSION['login'];
 </head>
 <body>
     <ul>
-        <li><a href="cadastrar_cliente.php">Cadastrar Cliente</a></li>
-        <li><a href="lista_clientes.php">Lista Clientes</a></li>
-        <li><a href="edita_cliente.php">Edita Cliente</a></li>
-        <li><a href="deleta_cliente.php">Deleta Cliente</a></li>
-        <li><a href="cadastrar_filmes.php">Cadastrar Filmes</a></li>
+        <?php 
+            if ($id_tipo_usuario == 1) {
+                echo '<li><a href="lista_clientes.php">Lista Clientes</a></li>';
+                echo '<li><a href="edita_cliente.php">Edita Cliente</a></li>';
+                echo '<li><a href="deleta_cliente.php">Deleta Cliente</a></li>';
+                echo '<li><a href="cadastrar_filmes.php">Cadastrar Filmes</a></li>';
+                echo '<li><a href="edita_filme.php">Edita Filme</a></li>';
+                echo '<li><a href="deleta_filme.php">Deleta Filme</a></li>';
+            }
+        ?>
+        
         <li><a href="lista_filmes.php">Lista Filmes</a></li>
-        <li><a href="edita_filme.php">Edita Filme</a></li>
-        <li><a href="deleta_filme.php">Deleta Filme</a></li>
+        
         <li><a href="cadastrar_locacao.php">Cadastrar Locação</a></li>
         <li><a href="lista_locacao.php">Lista Locacao</a></li>
         <li><a href="edita_locacao.php">Edita Locação</a></li>
