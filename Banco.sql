@@ -35,12 +35,17 @@ CREATE TABLE login (
     FOREIGN KEY (idcliente) REFERENCES cliente(idcliente)
 );
 
+CREATE TABLE tipo_usuario(
+id_tipo_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(300) NOT NULL
+);
 show tables;
-
+drop table me_tipo_usuario;
 select * from cliente;
 select * from filme;
 select * from aluguel;
 select * from login;
+
 select * from cliente order by idcliente asc;
 select * from cliente order by nomecliente asc;
 
