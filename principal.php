@@ -34,7 +34,7 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
             <li><a href="edita_locacao.php">Edita Locação</a></li>
             <li><a href="deleta_locacao.php">Deleta Locação</a></li>
 
-        <?php elseif ($id_tipo_usuario ==2) : ?> <!-- Funções do usuário -->
+        <?php elseif ($id_tipo_usuario == 2) : ?> <!-- Funções do usuário -->
             <li><a href="lista_filmes.php">Lista Filmes</a></li>
             <li><a href="cadastrar_locacao.php">Cadastrar Locação</a></li>
             <li><a href="lista_locacao.php">Lista Locacao</a></li>
