@@ -1,9 +1,7 @@
 <?php
-session_start(); // inicia a sessão
 include('conexao.php');
-
+include('verificacao.php');
 $login = $_SESSION['login'];
-
 //obtendo o tipo de usuário do banco de dados
 $select_tipo_usuario = "SELECT id_tipo_usuario FROM login";
 
@@ -40,6 +38,7 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
             <li><a href="cadastrar_locacao.php">Cadastrar Locação</a></li>
             <li><a href="lista_locacao.php">Lista Locacao</a></li>
         <?php endif; ?>
+        <li><a href="sair.php">Sair</a></li>
 
     </ul>
 </body>

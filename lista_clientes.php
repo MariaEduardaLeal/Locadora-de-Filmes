@@ -26,6 +26,7 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             <th>Bairro</th>
             <th>Cidade</th>
             <th>Estado</th>
+            <th>Deletar Usuário</th>
         </tr>
 
         <?php if ($resultado->num_rows > 0): ?>
@@ -38,10 +39,11 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                     <td><?= $row["bairro"] ?></td>
                     <td><?= $row["cidade"] ?></td>
                     <td><?= $row["estado"] ?></td>
+                    <td> <a href="deletar_usuario.php">Deletar usuário</a> </td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
-            <tr><td colspan='7'>Nenhum cliente encontrado.</td></tr>
+            <tr><td colspan='8'>Nenhum cliente encontrado.</td></tr>
         <?php endif; ?>
     </table>
 </body>
