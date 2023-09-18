@@ -38,7 +38,7 @@ if ($quant_login > 0) {
             $idCliente = mysqli_insert_id($conexao);
 
             // Insira os dados na tabela "login"
-            $inserirLogin = "INSERT INTO login (login, senha, idcliente) VALUES ('$login', '$senha', $idCliente)";
+            $inserirLogin = "INSERT INTO login (login, senha, idcliente, id_tipo_usuario) VALUES ('$login', '$senha', $idCliente, 2)";
 
             $queryInserirLogin = mysqli_query($conexao, $inserirLogin);
 
