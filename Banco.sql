@@ -41,15 +41,22 @@ CREATE TABLE tipo_usuario(
 id_tipo_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(300) NOT NULL
 );
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d2e5452e3ac729a318057dd5d72fa1e366b317da
 show tables;
 
 select * from cliente;
 select * from filme;
 select * from aluguel;
 select * from login;
+<<<<<<< HEAD
 select * from tipo_usuario;
+=======
+
+>>>>>>> d2e5452e3ac729a318057dd5d72fa1e366b317da
 select * from cliente order by idcliente asc;
 select * from cliente order by nomecliente asc;
 
