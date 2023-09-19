@@ -27,7 +27,6 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
             <li><a href="lista_clientes.php">Lista Clientes</a></li>
             <li><a href="edita_cliente.php">Edita Cliente</a></li>
             <li><a href="cadastrar_filme.php">Cadastrar Filmes</a></li>
-            <li><a href="edita_filme.php">Edita Filme</a></li>
             <li><a href="lista_filmes.php">Lista Filmes</a></li>
             <li><a href="edita_locacao.php">Edita Locação</a></li>
             <li><a href="deleta_locacao.php">Deleta Locação</a></li>
