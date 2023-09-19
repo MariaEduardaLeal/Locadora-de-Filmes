@@ -3,7 +3,7 @@ include('conexao.php');
 include('verificacao.php');
 $login = $_SESSION['login'];
 //obtendo o tipo de usuário do banco de dados
-$select_tipo_usuario = "SELECT id_tipo_usuario FROM login";
+$select_tipo_usuario = "SELECT id_tipo_usuario FROM login WHERE login = '$login'";
 
 $query_tipo_usuario = mysqli_query($conexao, $select_tipo_usuario);
 $dado_tipo_usuario = mysqli_fetch_assoc($query_tipo_usuario);
@@ -27,7 +27,7 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
             <li><a href="lista_clientes.php">Lista Clientes</a></li>
             <li><a href="edita_cliente.php">Edita Cliente</a></li>
             <li><a href="deleta_cliente.php">Deleta Cliente</a></li>
-            <li><a href="cadastrar_filmes.php">Cadastrar Filmes</a></li>
+            <li><a href="cadastrar_filme.php">Cadastrar Filmes</a></li>
             <li><a href="edita_filme.php">Edita Filme</a></li>
             <li><a href="deleta_filme.php">Deleta Filme</a></li>
             <li><a href="edita_locacao.php">Edita Locação</a></li>
