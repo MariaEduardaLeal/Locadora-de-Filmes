@@ -19,6 +19,15 @@ anofilme int not null,
 genero varchar (100) not null
 );
 
+create table filme (
+idfilme int primary key auto_increment,
+nomefilme varchar (100) not null,
+anofilme int not null,
+genero varchar (100) not null
+);
+
+ALTER TABLE filme
+ADD unidades_disponiveis int NOT NULL;
 create table aluguel (
 	idaluguel int primary key auto_increment,
     dataaluguel timestamp default current_timestamp,
