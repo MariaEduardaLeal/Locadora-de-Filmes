@@ -22,6 +22,9 @@
         <input type="submit" value="Cadastra">
 
     </form>
+
+    <a href="volta_principal.php">Voltar</a>
+
 </body>
 
 </html>
