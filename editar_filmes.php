@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 include('conexao.php');
 include('verificacao.php');
@@ -63,8 +62,4 @@ $unidades_filme = $dado_unidades['unidades_disponiveis'];
 
 </body>
 </html>
-=======
-<?php
 
-?>
->>>>>>> 94185440072ad572c2b6e0722bea741df58e08e0
