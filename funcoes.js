@@ -7,8 +7,8 @@ function mostrarOcultarSenha() {
     }
 }
 
- //Verifica se o login tem espaços entre os caracteres e os remove
- function validateLogin() {
+//Verifica se o login tem espaços entre os caracteres e os remove
+function validateLogin() {
     var loginInput = document.getElementById("login");
     var loginFeedback = document.getElementById("login-feedback");
     var login = loginInput.value;
@@ -24,8 +24,8 @@ function mostrarOcultarSenha() {
     }
 }
 
- //Verifica se o campo nome está em branco ou preenchido
- function validateNome() {
+//Verifica se o campo nome está em branco ou preenchido
+function validateNome() {
     var nomeInput = document.getElementById("nome");
     var nomeFeedback = document.getElementById("nome-feedback");
     var nome = nomeInput.value;
@@ -38,8 +38,8 @@ function mostrarOcultarSenha() {
         nomeInput.style.backgroundColor = "lightgreen";
     }
 }
- //Quando selecionado mostra a senha que o usuário digitou
- function mostrarOcultarSenha() {
+//Quando selecionado mostra a senha que o usuário digitou
+function mostrarOcultarSenha() {
     let senha = document.getElementById("senha");
     if (senha.type == "password") {
         senha.type = "text";
@@ -88,3 +88,11 @@ function validateForm() {
     return true; // Permite o envio do formulário
 }
 
+function confirmBack() {
+    if (
+        confirm("As informações não foram salvas. Deseja voltar sem salvar?")
+    ) {
+        return true;
+    }
+    return false;
+}
