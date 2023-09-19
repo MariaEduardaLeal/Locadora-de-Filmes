@@ -24,6 +24,6 @@ if (mysqli_query($conexao, $update_sql)) {
     echo "<script>window.location.href='lista_filmes.php'</script>";
 }
 
-// Feche a conexão com o banco de dados, se necessário
+
 mysqli_close($conexao);
 ?>
