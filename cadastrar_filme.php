@@ -19,6 +19,9 @@
         <span>Genero</span>
         <input type="text" name="genero" id="genero" required><br>
 
+        <span>Unidades Disponíveis</span>
+        <input type="number" name="unidades_disponiveis" id="unidades_disponiveis"><br>
+
         <input type="submit" value="Cadastra">
 
     </form>

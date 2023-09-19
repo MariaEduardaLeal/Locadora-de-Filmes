@@ -14,6 +14,8 @@ $query_tipo_usuario = mysqli_query($conexao, $select_tipo_usuario);
 $dado_tipo_usuario = mysqli_fetch_assoc($query_tipo_usuario);
 
 $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +69,8 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
                     <?php endif; ?>
                         <td>
                             <form action="criar_locavao_scripting.php" method="post">
+                                <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
+                                <input type="hidden" name="unidades_disponiveis" value="<?= $row['unidades_disponiveis'] ?>">
                                 <input type="submit" value="Alugar">
                             </form>
                         </td>

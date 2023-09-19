@@ -5,6 +5,7 @@ include('conexao.php');
 $nomeFilme = $_POST["nome"];
 $anoFilme = $_POST["ano"];
 $generoFilme = $_POST["genero"];
+$unidades_disponiveis = $_POST["unidades_disponiveis"];
 
 // Verifique se o filme já existe
 $verificar_filme = "SELECT idfilme FROM filme WHERE nomefilme = '$nomeFilme'";
@@ -19,8 +20,8 @@ if ($quant_filme > 0) {
     mysqli_begin_transaction($conexao);
 
     // Insira os dados na tabela "filme"
-    $inserirFilme = "INSERT INTO filme (nomefilme, anofilme, genero) 
-        VALUES ('$nomeFilme', '$anoFilme', '$generoFilme')";
+    $inserirFilme = "INSERT INTO filme (nomefilme, anofilme, genero, unidades_disponiveis) 
+        VALUES ('$nomeFilme', '$anoFilme', '$generoFilme', '$unidades_disponiveis')";
 
     $queryInserirFilme = mysqli_query($conexao, $inserirFilme);
 
