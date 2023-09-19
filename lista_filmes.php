@@ -71,13 +71,15 @@ $id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
                             <form action="criar_locavao_scripting.php" method="post">
                                 <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
                                 <input type="hidden" name="unidades_disponiveis" value="<?= $row['unidades_disponiveis'] ?>">
-                                <input type="submit" value="Alugar">
+                                <input type="submit" value="Alugar" <?php if ($row['unidades_disponiveis'] <= 0) echo 'style="display: none"'; ?>>
                             </form>
+                            <p <?php if ($row['unidades_disponiveis'] > 0) echo 'style="display:none"'; ?>>Unidades indisponíveis</p>
                         </td>
                 </tbody>
             <?php endwhile ?>
         <?php endif ?>
     </table>
+    <a href="principal.php">Voltar</a>
 </body>
 
 </html>
