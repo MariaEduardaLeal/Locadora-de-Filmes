@@ -1,34 +1,24 @@
 <?php
 include('conexao.php');
 include('verificacao.php');
-$login = $_SESSION['login'];
+include('funcoes.php');
 
+$login = $_SESSION['login'];
 $idfilme = $_POST['idfilme'];
 
-$nome_filmes = "SELECT nomefilme FROM filme 
-                       WHERE idfilme = $idfilme";
-$query_nome = mysqli_query($conexao, $nome_filmes);
-$dado_nome = mysqli_fetch_assoc($query_nome);
-$nome_filme = $dado_nome['nomefilme'];
+$nome_filme = getNomeFilme($conexao, $idfilme);
+$ano_filme = getAnoFilme($conexao, $idfilme);
+$genero_filme = getGeneroFilme($conexao, $idfilme);
+$unidades_filme = getUnidadesFilme($conexao, $idfilme);
 
-$ano_filmes = "SELECT anofilme FROM filme 
-                       WHERE idfilme = $idfilme";
-$query_ano = mysqli_query($conexao, $ano_filmes);
-$dado_ano = mysqli_fetch_assoc($query_ano);
-$ano_filme = $dado_ano['anofilme'];
-
-$genero_filmes = "SELECT genero FROM filme 
-                       WHERE idfilme = $idfilme";
-$query_genero = mysqli_query($conexao, $genero_filmes);
-$dado_genero = mysqli_fetch_assoc($query_genero);
-$genero_filme = $dado_genero['genero'];
-
-$unidades_filmes = "SELECT unidades_disponiveis FROM filme 
-                       WHERE idfilme = $idfilme";
-$query_unidades = mysqli_query($conexao, $unidades_filmes );
-$dado_unidades = mysqli_fetch_assoc($query_unidades);
-$unidades_filme = $dado_unidades['unidades_disponiveis'];
-?>
+// Verifique se há locações para o filme
+if (verificarLocacoesFilme($conexao, $idfilme)) {
+    // Há locações para o filme, exiba uma mensagem de aviso e não permita a edição
+    echo "<script>alert('Não é possível editar este filme, pois há locações associadas a ele.')</script>";
+    echo "<script>window.location.href='lista_filmes.php'</script>";
+} else {
+    // Não há locações para o filme, permita a edição
+    ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -63,4 +53,6 @@ $unidades_filme = $dado_unidades['unidades_disponiveis'];
 
 </body>
 </html>
-
+<?php
+}
+?>
