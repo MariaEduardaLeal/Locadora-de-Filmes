@@ -19,11 +19,11 @@ $dataalguel = $_POST['dataaluguel'];
 </head>
 <body>
     <form action="editar_locacao_scripting.php" method="post">
-        <input type="number" name="idfilme" value="<?= $idfilme ?>"><br>
-        <input type="number" name="idaluguel" value="<?= $idaluguel ?>"><br>
+        <input type="hidden" name="idfilme" value="<?= $idfilme ?>"><br>
+        <input type="hidden" name="idaluguel" value="<?= $idaluguel ?>"><br>
         
         <label>Nome Cliente: </label>
-        <input type="text" name="nome" id="nome" value="<?= $nomeCliente ?>" readonly><br>
+        <input type="text" name="nomeCliente" id="nome" value="<?= $nomeCliente ?>" readonly><br>
 
         <label>Nome Filme: </label>
         <?php criarCampoSelecaoFilmes($conexao, $idfilme); ?><br>
@@ -31,7 +31,7 @@ $dataalguel = $_POST['dataaluguel'];
         <label>Data Aluguel: </label>
         <input type="text" name="data" id="data" value="<?= $dataalguel ?>" placeholder="YYYY-MM-DD HH:MM:SS"><br>
 
-        <input type="submit" value="Editar" onclick="formatarData()">
+        <input type="submit" value="Editar" onclick="return editarComConfirmacao()">
         
     </form>
 

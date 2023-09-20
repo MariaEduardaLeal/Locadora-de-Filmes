@@ -130,3 +130,8 @@ function formatarData() {
         event.preventDefault(); // Impede o envio do formulário
     }
 }
+
+function editarComConfirmacao() {
+    formatarData(); // Chama a primeira função
+    return confirmEdit(); // Chama a segunda função e retorna o resultado
+}
