@@ -37,42 +37,43 @@ $resultado = mysqli_query($conexao, $sql);
     <h1>Lista de locações</h1>
     <table border="1">
         <tr>
-            <th>ID Aluguel</th>
+            <th style="display: none;">ID Aluguel</th>
             <th>Nome do Cliente</th>
             <th>Nome do Filme</th>
             <th>Data de Aluguel</th>
             <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
-                <th>Excluir Locação</th>
+                <th>Filme devolvido?</th>
                 <th>Editar Locação</th>
             <?php endif; ?>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
             <tr>
-                <td><?= $row['idaluguel'] ?></td>
+                <td style="display: none;"><?= $row['idaluguel'] ?></td>
                 <td><?= $row['nomecliente'] ?></td>
                 <td><?= $row['nomefilme'] ?></td>
                 <td><?= $row['dataaluguel'] ?></td>
                 <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
-                <td>
-                    <form action="excluir_locacao.php" method="post">
-                        <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
-                        <input type="submit" value="Excluir Locação" onclick="return confirmaExclusao()">
-                    </form>
-                </td>
-                <td>
-                    <form action="editar_locacao.php" method="post">
-                        <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
-                        <input type="hidden" name="nomecliente" value="<?= $row['nomecliente'] ?>">
-                        <input type="hidden" name="nomefilme" value="<?= $row['nomefilme'] ?>">
-                        <input type="hidden" name="dataaluguel" value="<?= $row['dataaluguel'] ?>">
-                        <input type="submit" value="Editar Locação">
-                    </form>
-                </td>
+                    <td>
+                        <form action="excluir_locacao.php" method="post">
+                            <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
+                            <input type="submit" value="Excluir Locação" onclick="return confirmaExclusao()">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="editar_locacao.php" method="post">
+                            <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
+                            <input type="hidden" name="nomecliente" value="<?= $row['nomecliente'] ?>">
+                            <input type="hidden" name="nomefilme" value="<?= $row['nomefilme'] ?>">
+                            <input type="hidden" name="dataaluguel" value="<?= $row['dataaluguel'] ?>">
+                            <input type="submit" value="Editar Locação">
+                        </form>
+                    </td>
                 <?php endif; ?>
             </tr>
         <?php endwhile ?>
     </table>
     <a href="principal.php">Voltar</a>
+    <script src="funcoes.js"></script>
 </body>
 
 </html>

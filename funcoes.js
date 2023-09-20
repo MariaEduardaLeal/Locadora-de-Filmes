@@ -106,11 +106,12 @@ function confirmBack() {
     return false;
 }
 
-function confirmaExclusao(){
-    if (
-        confirm("As informações excluidas serão apagadas do banco de dados e não poderam ser recuperadas. Deseja mesmo excluir esses dados?")
-    ) {
+function confirmaExclusao() {
+    var confirmacao = confirm("As informações excluídas serão apagadas do banco de dados e não poderão ser recuperadas. Deseja mesmo excluir esses dados?");
+
+    if (confirmacao) {
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
