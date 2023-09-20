@@ -56,10 +56,7 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             </tr>
         <?php endif; ?>
     </table>
+    <a href="principal.php" onclick="return confirmBack()">Voltar</a>
 </body>
 
 </html>
-<?php
-// Feche a conexão com o banco de dados
-$conexao->close();
-?>
