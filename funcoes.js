@@ -115,3 +115,18 @@ function confirmaExclusao() {
         return false;
     }
 }
+
+function formatarData() {
+    const dataInput = document.getElementById('data');
+    const inputData = dataInput.value.trim();
+
+    // Expressão regular para verificar o formato da data
+    const regexData = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
+
+    if (regexData.test(inputData)) {
+        // A data já está no formato esperado, não é necessário fazer nada
+    } else {
+        alert('Formato de data inválido. Use o formato "YYYY-MM-DD HH:MM:SS".');
+        event.preventDefault(); // Impede o envio do formulário
+    }
+}

@@ -48,4 +48,28 @@ function verificarLocacoesFilme($conexao, $idfilme) {
     return $total_locacoes > 0;
 }
 
+// Função para criar um campo de seleção com os nomes dos filmes
+function criarCampoSelecaoFilmes($conexao, $idfilme) {
+    // Consulta para obter os nomes dos filmes do banco de dados
+    $consulta_filmes = "SELECT idfilme, nomefilme FROM filme";
+    $resultado_filmes = mysqli_query($conexao, $consulta_filmes);
+
+    // Iniciar o campo de seleção
+    echo '<select name="nomeFilme" id="nomeFilme">';
+    
+    while ($row = mysqli_fetch_assoc($resultado_filmes)) {
+        $nomeFilme = $row['nomefilme'];
+        $idFilme = $row['idfilme'];
+        
+        // Criar uma opção para cada filme
+        echo "<option value=\"$idFilme\"";
+        if ($idfilme == $idFilme) {
+            echo " selected";
+        }
+        echo ">$nomeFilme</option>";
+    }
+
+    // Fechar o campo de seleção
+    echo '</select>';
+}
 ?>

@@ -9,7 +9,7 @@ $login = $_SESSION['login'];
 $id_tipo_usuario = getTipoUsuario($conexao, $login);
 
 // Inicialize a consulta SQL comum
-$sql = "SELECT al.idaluguel, cl.nomecliente, f.nomefilme, al.dataaluguel 
+$sql = "SELECT al.idaluguel, cl.nomecliente, f.nomefilme, al.dataaluguel, f.idfilme 
         FROM aluguel AS al
         INNER JOIN cliente AS cl ON al.idcliente = cl.idcliente
         INNER JOIN filme AS f ON al.idfilme = f.idfilme";
@@ -62,12 +62,14 @@ $resultado = mysqli_query($conexao, $sql);
                     <td>
                         <form action="editar_locacao.php" method="post">
                             <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
+                            <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
                             <input type="hidden" name="nomecliente" value="<?= $row['nomecliente'] ?>">
                             <input type="hidden" name="nomefilme" value="<?= $row['nomefilme'] ?>">
                             <input type="hidden" name="dataaluguel" value="<?= $row['dataaluguel'] ?>">
                             <input type="submit" value="Editar Locação">
                         </form>
                     </td>
+
                 <?php endif; ?>
             </tr>
         <?php endwhile ?>
