@@ -88,3 +88,29 @@ function validateForm() {
     return true; // Permite o envio do formulário
 }
 
+function confirmEdit(){
+    if (
+        confirm("Ao alterar os dados você não terá mais acesso aos dados antigos. Deseja mesmo continuar com a exclusão?")
+    ) {
+        return true;
+    }
+    return false;
+}
+
+function confirmBack() {
+    if (
+        confirm("As informações não foram salvas. Deseja voltar sem salvar?")
+    ) {
+        return true;
+    }
+    return false;
+}
+
+function confirmaExclusao(){
+    if (
+        confirm("As informações excluidas serão apagadas do banco de dados e não poderam ser recuperadas. Deseja mesmo excluir esses dados?")
+    ) {
+        return true;
+    }
+    return false;
+}

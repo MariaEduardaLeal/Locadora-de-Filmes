@@ -1,6 +1,7 @@
 <?php
 include('conexao.php');
 include('verificacao.php');
+include('funcoes.php');
 
 $login = $_SESSION['login'];
 
@@ -8,13 +9,7 @@ $informacao_filme = "SELECT * FROM filme";
 $resultado = mysqli_query($conexao, $informacao_filme);
 
 //obtendo o tipo de usuário do banco de dados
-$select_tipo_usuario = "SELECT id_tipo_usuario FROM login WHERE login = '$login'";
-
-$query_tipo_usuario = mysqli_query($conexao, $select_tipo_usuario);
-$dado_tipo_usuario = mysqli_fetch_assoc($query_tipo_usuario);
-
-$id_tipo_usuario = $dado_tipo_usuario['id_tipo_usuario'];
-
+$id_tipo_usuario = getTipoUsuario($conexao, $login);
 
 ?>
 

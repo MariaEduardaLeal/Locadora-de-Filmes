@@ -53,10 +53,11 @@ $unidades_filme = $dado_unidades['unidades_disponiveis'];
 
         <label>Unidades disponiveis: </label>
         <input type="number" name="unidades_disponiveis" required placeholder="<?= $unidades_filme ?>"><br>
-
-        <input type="submit" value="Editar" onclick="return confirmEdit();">
+        <!--TODO: Fazer uma função que verifique se há locações para esse filme, se houver ele não deixa editar, 
+        mas da a possibilidade de adcionar um novo filme ao catálogo -->
+        <input type="submit" value="Editar" onclick="return confirmEdit()">
     </form>
-    <a href="lista_filmes.php" onclick="return confirmBack();">Voltar</a>
+    <a href="lista_filmes.php" onclick="return confirmBack()">Voltar</a>
 
     <script src="funcoes.js"></script>
 
