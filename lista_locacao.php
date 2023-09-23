@@ -56,6 +56,7 @@ $resultado = mysqli_query($conexao, $sql);
                     <td>
                         <form action="excluir_locacao.php" method="post">
                             <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
+                            <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
                             <input type="submit" value="Excluir Locação" onclick="return confirmaExclusao()">
                         </form>
                     </td>

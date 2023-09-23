@@ -50,7 +50,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
                     <td><?= $row['unidades_disponiveis'] ?></td>
                     <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
                         <td>
-                            <form action="deletar_filme.php" method="post">
+                            <form action="deletar_filme.php" method="post" onsubmit="return confirmarExclusao()">
                                 <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
                                 <input type="hidden" name="unidades_disponiveis" value="<?= $row['unidades_disponiveis'] ?>">
                                 <input type="submit" value="Deletar filme">
@@ -76,6 +76,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
         <?php endif ?>
     </table>
     <a href="principal.php">Voltar</a>
+    <script src="funcoes.js"></script>
 </body>
 
 </html>

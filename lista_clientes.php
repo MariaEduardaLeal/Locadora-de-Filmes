@@ -1,6 +1,8 @@
 <?php
 session_start(); // Inicia a sessão
-require('conexao.php');
+include('conexao.php');
+include('verificacao.php');
+include('funcoes.php');
 
 $login = $_SESSION['login'];
 
@@ -44,7 +46,7 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                     <td>
                         <form action="deletar_usuario.php" method="post">
                             <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
-                            <input type="submit" value="Deletar usuário">
+                            <input type="submit" value="Deletar usuário" onclick="return confirmaExclusaoUsuario()">
                         </form>
 
                     </td>
@@ -56,7 +58,9 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             </tr>
         <?php endif; ?>
     </table>
-    <a href="principal.php" onclick="return confirmBack()">Voltar</a>
+    <a href="principal.php">Voltar</a>
+
+    <script src="funcoes.js"></script>
 </body>
 
 </html>

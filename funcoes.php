@@ -72,4 +72,31 @@ function criarCampoSelecaoFilmes($conexao, $idfilme) {
     // Fechar o campo de seleção
     echo '</select>';
 }
+
+function buscarInformacoesCliente($conexao) {
+    // Query SQL
+    $informacao_cliente = "SELECT * FROM cliente";
+    
+    // Executar a consulta
+    $resultado = mysqli_query($conexao, $informacao_cliente);
+    
+    // Verificar se a consulta foi bem-sucedida
+    if (!$resultado) {
+        die("Erro na consulta: " . mysqli_error($conexao));
+    }
+    
+    // Criar um array para armazenar os resultados
+    $clientes = array();
+    
+    // Loop para obter os resultados e armazená-los no array
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $clientes[] = $row;
+    }
+    
+    // Liberar o resultado da consulta
+    mysqli_free_result($resultado);
+    
+    // Retornar o array de clientes
+    return $clientes;
+}
 ?>

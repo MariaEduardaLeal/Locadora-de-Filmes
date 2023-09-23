@@ -135,3 +135,28 @@ function editarComConfirmacao() {
     formatarData(); // Chama a primeira função
     return confirmEdit(); // Chama a segunda função e retorna o resultado
 }
+
+function confirmarExclusao() {
+    var confirmacao = confirm("Ao excluir esse filme, você perderá todas as informações sobre ele e não poderá recuperá-las. Tem certeza que deseja continuar?");
+    
+    if (confirmacao) {
+        return true; // Continua com a exclusão
+    } else {
+        return false; // Cancela a exclusão
+    }
+}
+
+function sair() {
+    window.location.href = "sair.php";
+}
+
+function confirmaExclusaoUsuario() {
+    var confirmacao = confirm("Ao excluir esse usuário todas as informações sobre ele serão apagadas,"+
+                               "incluindo as locações no nome dele que ainda não foram entregues. Tem certeza q"+
+                               "ue gostaria de continuar? Você não terá mais acesso às informações dele depois que a exclusão for finalizada")
+    if (confirmacao) {
+        return true; // Continua com a exclusão
+    } else {
+        return false; // Cancela a exclusão
+    }
+}
