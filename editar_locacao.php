@@ -26,6 +26,7 @@ verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 <body>
     <form action="editar_locacao_scripting.php" method="post">
+        <input type="hidden" name="dataEntregaAntiga" value="<?= $prazo_de_entrega ?>">
         <input type="hidden" name="idfilme" value="<?= $idfilme ?>"><br>
         <input type="hidden" name="idaluguel" value="<?= $idaluguel ?>"><br>
 
