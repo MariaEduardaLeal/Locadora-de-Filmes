@@ -1,10 +1,10 @@
 <?php
-session_start(); // Inicia a sessão
 include('conexao.php');
 include('verificacao.php');
 include('funcoes.php');
 
 $login = $_SESSION['login'];
+verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 $informacao_cliente = "SELECT * FROM cliente";
 $resultado = mysqli_query($conexao, $informacao_cliente);

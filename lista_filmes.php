@@ -4,6 +4,7 @@ include('verificacao.php');
 include('funcoes.php');
 
 $login = $_SESSION['login'];
+verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 $informacao_filme = "SELECT * FROM filme";
 $resultado = mysqli_query($conexao, $informacao_filme);

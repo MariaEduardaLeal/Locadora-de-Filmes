@@ -115,8 +115,26 @@ function confirmaExclusao() {
         return false;
     }
 }
+function formatarData(input) {
+    // Obtém o valor inserido pelo usuário
+    var data = input.value;
 
-function formatarData() {
+    // Expressão regular para validar o formato YYYY-MM-DD
+    var regex = /^\d{4}-\d{2}-\d{2}$/;
+
+    // Verifica se a data inserida corresponde ao formato esperado
+    if (regex.test(data)) {
+        // A data já está no formato esperado, não é necessário fazer nada
+    } else {
+        // Caso a data não esteja no formato esperado, você pode exibir uma mensagem de erro ou tomar outra ação adequada.
+        alert('Formato de data inválido. Use o formato YYYY-MM-DD.');
+        // Ou limpar o campo
+        input.value = '';
+    }
+}
+
+
+function formatarDataHora() {
     const dataInput = document.getElementById('data');
     const inputData = dataInput.value.trim();
 
@@ -132,7 +150,8 @@ function formatarData() {
 }
 
 function editarComConfirmacao() {
-    formatarData(); // Chama a primeira função
+    formatarData();
+    formatarDataHora(); // Chama a primeira função
     return confirmEdit(); // Chama a segunda função e retorna o resultado
 }
 

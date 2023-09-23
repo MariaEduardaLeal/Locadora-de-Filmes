@@ -99,4 +99,75 @@ function buscarInformacoesCliente($conexao) {
     // Retornar o array de clientes
     return $clientes;
 }
+
+// Função para obter locações com base no tipo de usuário
+function getLocacoes($conexao, $login, $id_tipo_usuario) {
+    $sql = "SELECT al.idaluguel, cl.nomecliente, f.nomefilme, al.dataaluguel, s.status AS status_entrega, al.prazo_de_entrega, f.idfilme 
+            FROM aluguel AS al
+            INNER JOIN cliente AS cl ON al.idcliente = cl.idcliente
+            INNER JOIN filme AS f ON al.idfilme = f.idfilme
+            INNER JOIN status AS s ON al.status_de_entrega = s.id";
+
+    // Verifique o tipo de usuário e ajuste a consulta SQL conforme necessário
+    if ($id_tipo_usuario == 2) {
+        // Se o usuário for do tipo 2, ajuste a consulta para mostrar apenas suas locações
+        $sql .= " WHERE al.idcliente = (SELECT idcliente FROM login WHERE login = '$login')";
+    }
+
+    $resultado = mysqli_query($conexao, $sql);
+
+    return $resultado;
+}
+
+// Função para obter os valores da tabela 'status'
+function getStatus($conexao) {
+    $sqlStatus = "SELECT id, status FROM status";
+    $resultadoStatus = mysqli_query($conexao, $sqlStatus);
+
+    return $resultadoStatus;
+}
+
+function verificarStatusPendenteData($prazo_de_entrega) {
+    // Calcula a diferença entre o prazo de entrega e a data atual
+    $data_atual = date('Y-m-d H:i:s');
+    $diferenca = strtotime($prazo_de_entrega) - strtotime($data_atual);
+    $calculoDiasFaltam = ceil($diferenca / (60 * 60 * 24)); // Calcula o número de dias faltantes
+
+    if ($calculoDiasFaltam > 0) {
+        echo "<script>alert('Você não pode mudar o status do cliente para pendente, ele ainda tem $calculoDiasFaltam dia(s) para poder realizar a entrega')</script>";
+        echo "<script>window.location.href='lista_locacao.php'</script>";
+        exit;
+    }
+}
+
+function verificarStatusPrazo($prazo_de_entrega)
+{
+    // Verifique se a data atual é posterior ao prazo de entrega
+    $data_atual = date('Y-m-d');
+    
+    if ($data_atual > $prazo_de_entrega) {
+        echo "<script>alert('O prazo de entrega já passou')</script>";
+        echo "<script>window.location.href='lista_locacao.php'</script>";
+        exit; // Saia do script se o prazo já passou
+    }
+}
+
+function verificarLocacaoPendenteEExibirAlerta($conexao, $login) {
+    // Consulta SQL para verificar se o usuário tem uma locação pendente
+    $query = "SELECT aluguel.status_de_entrega
+              FROM login
+              INNER JOIN aluguel ON login.idcliente = aluguel.idcliente
+              WHERE login.login = '$login'
+              AND aluguel.status_de_entrega = 2";
+
+    $resultado = mysqli_query($conexao, $query);
+
+    if (mysqli_num_rows($resultado) > 0) {
+        // O usuário tem uma locação pendente, exibir alerta e redirecionar
+        echo "<script>alert('Você tem uma locação pendente, portanto você não tem mais acesso ao sistema. Devolva o filme na locadora e seu acesso será permitido novamente.')</script>";
+        echo "<script>window.location.href='sair.php'</script>";
+        exit; // Saia da função após exibir o alerta
+    }
+}
+
 ?>

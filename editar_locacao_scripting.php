@@ -6,9 +6,10 @@ $idaluguel = $_POST['idaluguel'];
 $nomeCliente = $_POST['nomeCliente'];
 $idFilmeEscolhido = $_POST['nomeFilme'];
 $dataLocacao = $_POST['data'];
+$dataEntrega = $_POST['data_de_entrega'];
 
 $update_locacao = "UPDATE aluguel
-                    SET idfilme = '$idFilmeEscolhido', dataaluguel = '$dataLocacao'
+                    SET idfilme = '$idFilmeEscolhido', dataaluguel = '$dataLocacao', prazo_de_entrega = '$dataEntrega'
                     WHERE idaluguel = '$idaluguel'";
 $query_update = mysqli_query($conexao, $update_locacao);
 

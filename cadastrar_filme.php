@@ -1,3 +1,11 @@
+<?php
+include('conexao.php');
+include('funcoes.php');
+include('verificacao.php');
+$login = $_SESSION['login'];
+verificarLocacaoPendenteEExibirAlerta($conexao, $login);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
