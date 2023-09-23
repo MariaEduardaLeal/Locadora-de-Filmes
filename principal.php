@@ -33,7 +33,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
             <li><a href="lista_locacao.php">Lista Locacao</a></li>
         <?php endif; ?>
 
-        <button onclick="goBack()">Sair</button>
+        <button onclick="sair()">Sair</button>
         <script src="funcoes.js"></script>
 
     </ul>

@@ -139,3 +139,8 @@ function editarComConfirmacao() {
 function goBack() {
     window.history.back();
 }
+
+function sair(){
+    window.location.href="sair.php"
+    
+}
