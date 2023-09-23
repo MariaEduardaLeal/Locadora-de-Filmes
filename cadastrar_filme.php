@@ -22,11 +22,11 @@
         <span>Unidades Disponíveis</span>
         <input type="number" name="unidades_disponiveis" id="unidades_disponiveis"><br>
 
-        <input type="submit" value="Cadastra">
+        <input type="submit" value="Cadastrar">
 
     </form>
 
-    <a href="volta_principal.php">Voltar</a>
+    <a href="principal.php">Voltar</a>
 
 </body>
 

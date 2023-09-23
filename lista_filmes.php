@@ -52,6 +52,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
                         <td>
                             <form action="deletar_filme.php" method="post">
                                 <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
+                                <input type="hidden" name="unidades_disponiveis" value="<?= $row['unidades_disponiveis'] ?>">
                                 <input type="submit" value="Deletar filme">
                             </form>
                         </td>
