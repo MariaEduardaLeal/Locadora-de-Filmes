@@ -76,8 +76,12 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
             <?php endwhile ?>
         <?php endif ?>
     </table>
+<<<<<<< HEAD
     <button onclick="goBack()">Voltar</button>
         <script src="funcoes.js"></script>    
+=======
+    <a href="principal.php">Voltar</a>
+>>>>>>> 8874dd3465ba9ca938adf156b5d5c7bb34ba0c40
 </body>
 
 </html>

@@ -75,7 +75,11 @@ $resultado = mysqli_query($conexao, $sql);
             </tr>
         <?php endwhile ?>
     </table>
+<<<<<<< HEAD
     <button onclick="goBack()">Voltar</button>
+=======
+    <a href="principal.php">Voltar</a>
+>>>>>>> 8874dd3465ba9ca938adf156b5d5c7bb34ba0c40
     <script src="funcoes.js"></script>
 </body>
 

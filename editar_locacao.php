@@ -34,7 +34,7 @@ $dataalguel = $_POST['dataaluguel'];
         <input type="submit" value="Editar" onclick="return editarComConfirmacao()">
         
     </form>
-
+    <a href="lista_locacao.php" onclick="return confirmBack()">Voltar</a>
     <script src="funcoes.js"></script>
 </body>
 </html>
