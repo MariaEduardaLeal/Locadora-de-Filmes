@@ -11,7 +11,7 @@ $nomeCliente = $_POST['nomecliente'];
 $nomeFilme = $_POST['nomefilme'];
 $dataalguel = $_POST['dataaluguel'];
 $prazo_de_entrega = $_POST['dataentrega'];
-
+verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 ?>
 

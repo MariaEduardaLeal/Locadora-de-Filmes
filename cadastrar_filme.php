@@ -3,6 +3,7 @@ include('conexao.php');
 include('funcoes.php');
 include('verificacao.php');
 $login = $_SESSION['login'];
+verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 ?>

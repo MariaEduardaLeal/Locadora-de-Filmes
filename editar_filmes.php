@@ -5,6 +5,7 @@ include('funcoes.php');
 
 $login = $_SESSION['login'];
 $idfilme = $_POST['idfilme'];
+verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 $nome_filme = getNomeFilme($conexao, $idfilme);

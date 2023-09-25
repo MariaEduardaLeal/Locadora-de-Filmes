@@ -4,6 +4,7 @@ include('verificacao.php');
 include('funcoes.php');
 
 $login = $_SESSION['login'];
+verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 $informacao_cliente = "SELECT * FROM cliente";

@@ -4,6 +4,7 @@ include('verificacao.php');
 include('funcoes.php');
 
 $login = $_SESSION['login'];
+verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 // Obtendo o tipo de usuário usando a função
@@ -48,6 +49,7 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
             <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
                 <th>Mudar Status</th>
                 <th>Editar Locação</th>
+                <th>Excluir Locação</th>
             <?php endif; ?>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
@@ -76,7 +78,7 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
                             <input type="submit" value="Atualizar Status">
                         </form>
                     </td>
-                
+
                     <td>
                         <form action="editar_locacao.php" method="post">
                             <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
@@ -88,6 +90,16 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
                             <input type="submit" value="Editar Locação">
                         </form>
                     </td>
+
+                    <td>
+                        <form action="excluir_locacao.php" method="post">
+                            <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
+                            <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
+                            <input type="submit" value="Excluir Locação" onclick="return confirmaExclusao()">
+                        </form>
+                    </td>
+
+
                 <?php endif; ?>
             </tr>
         <?php endwhile ?>
