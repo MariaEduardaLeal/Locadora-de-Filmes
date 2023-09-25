@@ -6,6 +6,8 @@ $login = $_SESSION['login'];
 //obtendo o tipo de usuário do banco de dados
 $id_tipo_usuario = getTipoUsuario($conexao, $login);
 
+verificarEAtualizarStatusPendente($conexao, $login);
+
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
 ?>

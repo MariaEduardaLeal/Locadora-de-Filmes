@@ -170,4 +170,32 @@ function verificarLocacaoPendenteEExibirAlerta($conexao, $login) {
     }
 }
 
+function verificarEAtualizarStatusPendente($conexao, $login){
+    // Obtém a data atual
+    $dataAtual = date('Y-m-d');
+
+    // Consulta para obter todos os aluguéis do usuário com status "Dentro do Prazo"
+    $query = "SELECT idaluguel, prazo_de_entrega FROM aluguel
+              INNER JOIN login ON aluguel.idcliente = login.idcliente
+              WHERE login.login = '$login'
+              AND status_de_entrega = 1"; // Status "Dentro do Prazo"
+
+    $resultado = mysqli_query($conexao, $query);
+
+    while ($row = mysqli_fetch_assoc($resultado)) {
+        $idaluguel = $row['idaluguel'];
+        $prazoDeEntrega = $row['prazo_de_entrega'];
+
+        // Verifica se a data atual é um dia após o prazo de entrega
+        $umDiaDepoisPrazo = date('Y-m-d', strtotime($prazoDeEntrega . ' + 1 day'));
+
+        if ($dataAtual > $umDiaDepoisPrazo) {
+            // Atualiza o status para "Pendente" (status 2)
+            $atualizarStatus = "UPDATE aluguel SET status_de_entrega = 2 WHERE idaluguel = '$idaluguel'";
+            mysqli_query($conexao, $atualizarStatus);
+        }
+    }
+}
+
+
 ?>
