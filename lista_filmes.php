@@ -33,7 +33,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
             <th>Ano</th>
             <th>Gênero</th>
             <th>Unidades disponiveis</th>
-            <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
+            <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM-->
                 <th>Excluir Filme do Banco de Dados</th>
                 <th>Editar Filme do Banco de dados</th>
             <?php endif; ?>
@@ -50,7 +50,7 @@ $id_tipo_usuario = getTipoUsuario($conexao, $login);
                     <td><?= $row['anofilme'] ?></td>
                     <td><?= $row['genero'] ?></td>
                     <td><?= $row['unidades_disponiveis'] ?></td>
-                    <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
+                    <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM-->
                         <td>
                             <form action="deletar_filme.php" method="post" onsubmit="return confirmarExclusao()">
                                 <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">

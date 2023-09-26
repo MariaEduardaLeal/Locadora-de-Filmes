@@ -46,7 +46,7 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
             <th>Data de Aluguel</th>
             <th>Status de Entrega</th>
             <th>Data de Devolução</th>
-            <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
+            <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM-->
                 <th>Mudar Status</th>
                 <th>Editar Locação</th>
                 <th>Excluir Locação</th>
@@ -60,7 +60,7 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
                 <td><?= $row['dataaluguel'] ?></td>
                 <td><?= $row['status_entrega'] ?></td>
                 <td><?= $row['prazo_de_entrega'] ?></td>
-                <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
+                <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM-->
                     <td>
                         <form action="atualizar_status_locacao.php" method="post">
                             <input type="hidden" name="prazo_de_entrega" value="<?= $row['prazo_de_entrega'] ?>">
