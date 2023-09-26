@@ -62,6 +62,18 @@ ALTER TABLE aluguel
 ADD status_de_entrega INT NOT NULL,
 ADD CONSTRAINT fk_status_de_entrega FOREIGN KEY (status_de_entrega) REFERENCES status(id);
 
+INSERT INTO cliente(idcliente, nomecliente, logradouro, numlogradouro, bairro, cidade, estado)
+VALUES(1 ,'adm', 'rua das flores', '800', 'bairro das rosas', 'jardim grande', 'pequeno jardim');
+
+INSERT INTO login(login, senha, idcliente, id_tipo_usuario)
+VALUES('adm', '1234', 1, 1);
+
+INSERT INTO cliente(idcliente, nomecliente, logradouro, numlogradouro, bairro, cidade, estado)
+VALUES(2 ,'cliente', 'rua das flores', '590', 'bairro das rosas', 'jardim grande', 'pequeno jardim');
+
+INSERT INTO login(login, senha, idcliente, id_tipo_usuario)
+VALUES('cliente', '1234', 2, 2);
+
 show tables;
 
 select * from cliente;
