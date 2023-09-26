@@ -7,7 +7,7 @@
     <script type="text/javascript" src="funcoes.js"></script>
 </head>
 <body>
-    <form action="cadastrar_cliente_scriptign.php" method="post" onsubmit="return validarFormulario()">
+    <form action="cadastrar_cliente_scriptign.php" method="post" onclick="return validateForm()">
         <span>Nome do usuário</span>
         <input type="text" name="nome" id="nome" required><br>
 

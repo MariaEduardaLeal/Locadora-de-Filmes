@@ -1,4 +1,19 @@
 <?php
+
+function verificarSeUsuarioExiste($conexao, $login){
+    $verifica_login_existe = "SELECT login FROM login WHERE login = '$login'";
+    $query_verificar = mysqli_query($conexao, $verifica_login_existe);
+    
+    if ($query_verificar->num_rows>0) {
+        $dado_login = mysqli_fetch_assoc($query_verificar);
+        return $dado_login['login'];
+    }else {
+        echo "<script>alert('Login não encontrado')</script>";
+        echo "<script>window.location.href='mudar_senha.php'</script>";
+    }
+
+}
+
 //Pega o tipo de usuário
 function getTipoUsuario($conexao, $login) {
     $select_tipo_usuario = "SELECT id_tipo_usuario FROM login WHERE login = '$login'";

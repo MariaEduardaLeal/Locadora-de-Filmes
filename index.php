@@ -17,6 +17,7 @@
         <input type="submit" value="Entrar">
     </form>
     <a href="cadastrar_cliente.php">Cadastrar novo cliente</a>
+    <a href="mudar_senha.php">Esqueceu a senha?</a>
 
     
 </body>
