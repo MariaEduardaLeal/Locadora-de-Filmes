@@ -1,3 +1,4 @@
+drop database locadorafilmes;
 create database locadorafilmes;
 
 use locadorafilmes;
@@ -23,15 +24,18 @@ ADD unidades_disponiveis int NOT NULL;
 
 CREATE TABLE tipo_usuario(
 id_tipo_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nome VARCHAR(300) NOT NULL
+nome VARCHAR(500) not null
 );
--- Inserir o primeiro valor (id=1 e nome=adm)
+
 INSERT INTO tipo_usuario (id_tipo_usuario, nome)
 VALUES (1, 'adm');
 
 -- Inserir o segundo valor (id=2 e nome=usuario_comum)
 INSERT INTO tipo_usuario (id_tipo_usuario, nome)
-VALUES (2, 'usuario_comum');
+VALUES (2, 'cliente');
+
+INSERT INTO tipo_usuario (id_tipo_usuario, nome)
+VALUES (3, 'funcionario');
 
 CREATE TABLE login (
     login varchar(100) PRIMARY KEY,
@@ -46,6 +50,10 @@ CREATE TABLE status (
     id INT PRIMARY KEY AUTO_INCREMENT,
     status ENUM('Dentro do Prazo', 'Pendente','Entregue') NOT NULL
 );
+INSERT INTO status (status) VALUES
+('Dentro do Prazo'),
+('Pendente'),
+('Entregue');
 
 create table aluguel (
 	idaluguel int primary key auto_increment,
@@ -62,17 +70,6 @@ ALTER TABLE aluguel
 ADD status_de_entrega INT NOT NULL,
 ADD CONSTRAINT fk_status_de_entrega FOREIGN KEY (status_de_entrega) REFERENCES status(id);
 
-INSERT INTO cliente(idcliente, nomecliente, logradouro, numlogradouro, bairro, cidade, estado)
-VALUES(1 ,'adm', 'rua das flores', '800', 'bairro das rosas', 'jardim grande', 'pequeno jardim');
-
-INSERT INTO login(login, senha, idcliente, id_tipo_usuario)
-VALUES('adm', '1234', 1, 1);
-
-INSERT INTO cliente(idcliente, nomecliente, logradouro, numlogradouro, bairro, cidade, estado)
-VALUES(2 ,'cliente', 'rua das flores', '590', 'bairro das rosas', 'jardim grande', 'pequeno jardim');
-
-INSERT INTO login(login, senha, idcliente, id_tipo_usuario)
-VALUES('cliente', '1234', 2, 2);
 
 show tables;
 
