@@ -18,7 +18,7 @@ $quant_login = mysqli_num_rows($query_ver_login);
 
 if ($quant_login > 0) {
     echo "<script>alert('O login já existe, por favor escolha outro')</script>";
-    echo "<script>window.location.href='cadastro.php'</script>";
+    echo "<script>window.location.href='cadastrar_cliente.php'</script>";
 } else {
     if (!preg_match('/^[a-zA-Z0-9]+$/', $login)) {
         echo "<script>alert('O login deve conter apenas letras e números.')</script>";

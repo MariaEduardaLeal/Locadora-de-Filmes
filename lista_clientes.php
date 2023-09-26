@@ -4,10 +4,21 @@ include('verificacao.php');
 include('funcoes.php');
 
 $login = $_SESSION['login'];
+$id_tipo_usuario = getTipoUsuario($conexao, $login);
+
+if ($id_tipo_usuario == 2) {
+    echo "<script>alert('Você não tem o direito de acessar essa página')</script>";
+    echo "<script>window.location.href='principal.php'</script>";
+}
+
 verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
-$informacao_cliente = "SELECT * FROM cliente";
+$informacao_cliente = "SELECT c.idcliente, c.nomecliente, c.logradouro, c.numlogradouro, c.bairro, c.cidade, c.estado, l.id_tipo_usuario, tu.nome AS nome_tipo_usuario
+FROM cliente c
+LEFT JOIN login l ON c.idcliente = l.idcliente
+LEFT JOIN tipo_usuario tu ON l.id_tipo_usuario = tu.id_tipo_usuario";
+
 $resultado = mysqli_query($conexao, $informacao_cliente);
 ?>
 
@@ -31,6 +42,10 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             <th>Bairro</th>
             <th>Cidade</th>
             <th>Estado</th>
+            <th>Tipo de Usuário</th>
+            <?php if ($id_tipo_usuario == 1) : ?>
+                <th>Alterar Tipo</th>
+            <?php endif; ?>
             <th>Deletar Usuário</th>
         </tr>
 
@@ -44,18 +59,33 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                     <td><?= $row["bairro"] ?></td>
                     <td><?= $row["cidade"] ?></td>
                     <td><?= $row["estado"] ?></td>
+                    <td><?= $row["nome_tipo_usuario"] ?></td>
+                    <?php if ($id_tipo_usuario == 1) : ?>
+                        <td>
+                            <form action="atualizar_tipo_usuario.php" method="post">
+                                <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
+                                <select name="novo_tipo_usuario">
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Cliente</option>
+                                    <option value="3">Funcionário</option>
+                                </select>
+                                <input type="submit" value="Atualizar">
+                            </form>
+                        </td>
+                    <?php endif; ?>
                     <td>
                         <form action="deletar_usuario.php" method="post">
                             <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
+                            <input type="hidden" name="id_tipo_usuario" value="<?= $id_tipo_usuario ?>">
+                            <input type="hidden" name="tipo_usuario_tabela" value="<?= $row["nome_tipo_usuario"] ?>">
                             <input type="submit" value="Deletar usuário" onclick="return confirmaExclusaoUsuario()">
                         </form>
-
                     </td>
                 </tr>
             <?php endwhile; ?>
         <?php else : ?>
             <tr>
-                <td colspan='8'>Nenhum cliente encontrado.</td>
+                <td colspan='9'>Nenhum cliente encontrado.</td>
             </tr>
         <?php endif; ?>
     </table>

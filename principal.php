@@ -24,7 +24,7 @@ verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 <body>
     <h1>Bem vindo, <?php echo $login ?></h1>
     <ul>
-        <?php if ($id_tipo_usuario == 1) : ?> <!--Funções do ADM-->
+        <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM e funcionário-->
             <li><a href="lista_clientes.php">Lista Clientes</a></li>
             <li><a href="cadastrar_filme.php">Cadastrar Filmes</a></li>
             <li><a href="lista_filmes.php">Lista Filmes</a></li>
