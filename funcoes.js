@@ -90,7 +90,7 @@ function validateForm() {
 
 function confirmEdit(){
     if (
-        confirm("Ao alterar os dados você não terá mais acesso aos dados antigos. Deseja mesmo continuar com a exclusão?")
+        confirm("Ao alterar os dados você não terá mais acesso aos dados antigos. Deseja mesmo continuar com a edição?")
     ) {
         return true;
     }

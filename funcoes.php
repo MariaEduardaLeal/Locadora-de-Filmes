@@ -211,6 +211,20 @@ function verificarEAtualizarStatusPendente($conexao, $login){
         }
     }
 }
+function verificarPermissaoParaEditar($id_tipo_usuario, $tipo_usuario_tabela) {
+    // Se o id_tipo_usuario for 1 (adm), ele pode editar qualquer tipo de usuário (2 ou 3)
+    if ($id_tipo_usuario == 1) {
+        return true;
+    }
+    
+    // Se o id_tipo_usuario for 3 (funcionario), ele só pode editar se o tipo_usuario_tabela for 2 (cliente)
+    if ($id_tipo_usuario == 3 && $tipo_usuario_tabela == 'cliente') {
+        return true;
+    }
+    
+    // Caso contrário, não tem permissão para editar
+    return false;
+}
 
 
 ?>

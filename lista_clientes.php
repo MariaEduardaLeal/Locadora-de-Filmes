@@ -46,6 +46,7 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             <?php if ($id_tipo_usuario == 1) : ?>
                 <th>Alterar Tipo</th>
             <?php endif; ?>
+            <th>Editar Cadastro</th>
             <th>Deletar Usuário</th>
         </tr>
 
@@ -73,6 +74,20 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                             </form>
                         </td>
                     <?php endif; ?>
+                    <td>
+                        <form action="editar_cadastro_usuario.php" method="post">
+                            <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
+                            <input type="hidden" name="nomeCliente" value="<?= $row["nomecliente"] ?>">
+                            <input type="hidden" name="logradouro" value="<?= $row["logradouro"] ?>">
+                            <input type="hidden" name="numlogradouro" value="<?= $row["numlogradouro"] ?>">
+                            <input type="hidden" name="bairro" value="<?= $row["bairro"] ?>">
+                            <input type="hidden" name="cidade" value="<?= $row["cidade"] ?>">
+                            <input type="hidden" name="estado" value="<?= $row["estado"] ?>">
+                            <input type="hidden" name="id_tipo_usuario" value="<?= $id_tipo_usuario ?>">
+                            <input type="hidden" name="tipo_usuario_tabela" value="<?= $row['nome_tipo_usuario'] ?>">
+                            <input type="submit" value="Editar Usuário">
+                        </form>
+                    </td>
                     <td>
                         <form action="deletar_usuario.php" method="post">
                             <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
