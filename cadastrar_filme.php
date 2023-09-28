@@ -6,6 +6,13 @@ $login = $_SESSION['login'];
 verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
 
+$id_tipo_usuario = getTipoUsuario($conexao, $login);
+
+if ($id_tipo_usuario == 2) {
+    echo "<script>alert('Você não tem o direito de acessar essa página')</script>";
+    echo "<script>window.location.href='principal.php'</script>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
