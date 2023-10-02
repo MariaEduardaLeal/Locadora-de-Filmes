@@ -1,0 +1,45 @@
+/* Estilo para o formulário */
+.container {
+    width: 50%; /* Torna o formulário metade da largura da tela */
+    background-color: #ffffff00;
+    padding: 1%; /* Aumenta o espaçamento interno do formulário */
+    border-radius: 10px; /* Aumenta o raio das bordas do formulário */    
+    margin: 0 auto; /* Centraliza o formulário horizontalmente */
+    max-width: 500px; /* Define a largura máxima do formulário */        
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+button[type="submit"] {
+    margin: 5% 40% 2px; /* Define a margem inferior como 2px e remove a margem superior */
+}
+
+button {
+    margin-top: -10%; /* Define a margem inferior como 0 e remove a margem superior e esquerda */
+    margin-left: 40%;
+}
+
+/* Estilos para dispositivos menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    span {
+        margin-left: 0;
+    }
+}
+
+
+
+
+
+

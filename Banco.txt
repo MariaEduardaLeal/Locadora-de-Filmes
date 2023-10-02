@@ -1,3 +1,4 @@
+drop database locadorafilmes;
 create database locadorafilmes;
 
 use locadorafilmes;
@@ -18,35 +19,23 @@ nomefilme varchar (100) not null,
 anofilme int not null,
 genero varchar (100) not null
 );
-
-create table filme (
-idfilme int primary key auto_increment,
-nomefilme varchar (100) not null,
-anofilme int not null,
-genero varchar (100) not null
-);
-
 ALTER TABLE filme
 ADD unidades_disponiveis int NOT NULL;
-create table aluguel (
-	idaluguel int primary key auto_increment,
-    dataaluguel timestamp default current_timestamp,
-    idcliente int not null,
-    idfilme int not null,
-    foreign key (idcliente) references cliente(idcliente),
-    foreign key (idfilme) references filme(idfilme)
-);
+
 CREATE TABLE tipo_usuario(
 id_tipo_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nome VARCHAR(300) NOT NULL
+nome VARCHAR(500) not null
 );
--- Inserir o primeiro valor (id=1 e nome=adm)
+
 INSERT INTO tipo_usuario (id_tipo_usuario, nome)
 VALUES (1, 'adm');
 
 -- Inserir o segundo valor (id=2 e nome=usuario_comum)
 INSERT INTO tipo_usuario (id_tipo_usuario, nome)
-VALUES (2, 'usuario_comum');
+VALUES (2, 'cliente');
+
+INSERT INTO tipo_usuario (id_tipo_usuario, nome)
+VALUES (3, 'funcionario');
 
 CREATE TABLE login (
     login varchar(100) PRIMARY KEY,
@@ -57,7 +46,29 @@ CREATE TABLE login (
     FOREIGN KEY (idcliente) REFERENCES cliente(idcliente)
 );
 
+CREATE TABLE status (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    status ENUM('Dentro do Prazo', 'Pendente','Entregue') NOT NULL
+);
+INSERT INTO status (status) VALUES
+('Dentro do Prazo'),
+('Pendente'),
+('Entregue');
 
+create table aluguel (
+	idaluguel int primary key auto_increment,
+    dataaluguel timestamp default current_timestamp,
+    idcliente int not null,
+    idfilme int not null,
+    foreign key (idcliente) references cliente(idcliente),
+    foreign key (idfilme) references filme(idfilme)
+);
+ALTER TABLE aluguel
+ADD prazo_de_entrega DATE;
+
+ALTER TABLE aluguel
+ADD status_de_entrega INT NOT NULL,
+ADD CONSTRAINT fk_status_de_entrega FOREIGN KEY (status_de_entrega) REFERENCES status(id);
 
 
 show tables;
@@ -66,7 +77,9 @@ select * from cliente;
 select * from filme;
 select * from aluguel;
 select * from login;
+select * from status;
 select * from tipo_usuario;
+select * from status;
 select * from cliente order by idcliente asc;
 select * from cliente order by nomecliente asc;
 
@@ -75,4 +88,9 @@ select * from filme order by nomefilme asc;
 
 select * from aluguel order by idaluguel asc;
 select * from aluguel order by dataaluguel asc;
+
+SELECT aluguel.status_de_entrega
+FROM login
+INNER JOIN aluguel ON login.idcliente = aluguel.idcliente
+WHERE login.login = 'Duda';
 

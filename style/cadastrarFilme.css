@@ -1,4 +1,17 @@
-button[type="submit"]{
-   margin-left: 36%;
-      
+button[type="submit"] {
+   margin-left: 35%;
+   margin-bottom: -10%;
+
+}
+
+button{
+   margin-left: 12%;
+   margin-top: 0%;
+}
+
+.center-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 2vh; /* Isso garante que a div ocupe a altura total da tela */
 }

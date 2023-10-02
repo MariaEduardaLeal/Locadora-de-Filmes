@@ -5,8 +5,11 @@ $login = $_SESSION['login'];
 
 $idfilme = $_POST['idfilme'];
 
-date_default_timezone_set('America/Sao_Paulo');//Define o timezone do Brasil
+date_default_timezone_set('America/Sao_Paulo'); // Define o timezone do Brasil
 $data_atual = date('Y-m-d H:i:s');
+
+// Calcula a data de entrega, que é 7 dias após a data atual
+$data_entrega = date('Y-m-d H:i:s', strtotime($data_atual . ' + 7 days'));
 
 $select_idCliente = "SELECT idcliente FROM login WHERE login = '$login'";
 
@@ -17,8 +20,10 @@ $dado_idCliente = mysqli_fetch_assoc($query_idCliente);
 $idcliente = $dado_idCliente['idcliente'];
 
 // TODO: Fazer o insert na tabela aluguel
-$inserir_valores = "INSERT INTO aluguel(dataaluguel, idcliente, idfilme)
-                    VALUES ('$data_atual', '$idcliente', '$idfilme')";
+$inserir_valores = "INSERT INTO aluguel(dataaluguel, idcliente, idfilme, prazo_de_entrega, status_de_entrega)
+                    VALUES ('$data_atual', '$idcliente', '$idfilme', '$data_entrega', 1)";
+
+                    //INSERT INTO aluguel(dataaluguel, dataentrega, idcliente, idfilme) VALUES ('$data_atual', '$data_entrega', '$idcliente', '$idfilme')";
 if (mysqli_query($conexao, $inserir_valores)) {
     // Inserção bem-sucedida
     // TODO: Faça a subtração das unidades disponíveis na tabela filme
@@ -32,11 +37,11 @@ if (mysqli_query($conexao, $inserir_valores)) {
 
     $subtracao_unidades = $unidades_disponiveis - 1;
 
-    $update_uniades = "UPDATE filme SET 
+    $update_unidades = "UPDATE filme SET 
     unidades_disponiveis = $subtracao_unidades
     WHERE idfilme = $idfilme";
 
-    if (mysqli_query($conexao, $update_uniades)) {
+    if (mysqli_query($conexao, $update_unidades)) {
         echo "<script>alert('Aluguel confirmado com sucesso, passe hoje na loja para retirar seu filme')</script>";
         echo "<script>window.location.href='lista_filmes.php'</script>";
     } else {

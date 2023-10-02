@@ -9,10 +9,11 @@ if ($login == '' || $senha == '') {
     echo "<script>window.location.href='index.php'</script>";
 } else {
     // Use prepared statements para evitar injeção SQL
-    $select = "SELECT login, senha FROM login WHERE login = ? AND senha = ?";
+    $select = "SELECT login, senha FROM login WHERE login = ? AND senha = ? LIMIT 1";
     $stmt = mysqli_prepare($conexao, $select);
     
     if ($stmt) {
+        //Prevenir SQL Injection
         mysqli_stmt_bind_param($stmt, "ss", $login, $senha);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $dbLogin, $dbSenha);

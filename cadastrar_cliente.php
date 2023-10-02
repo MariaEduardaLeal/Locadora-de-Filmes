@@ -7,14 +7,13 @@
     <title>Cadastrar cliente</title>
     <script type="text/javascript" src="funcoes.js"></script>
     <link rel="stylesheet" href="style/styleGeral.css">
-    <link rel="stylesheet" href="style/cadastrar_cliente.css">
+    <link rel="stylesheet" href="style/cadastrarCliente.css">
 </head>
 
 <body>
-    <div id="container">
-        <form action="cadastrar_cliente_scriptign.php" method="post" onsubmit="return validarFormulario()">
-            <h1>cadastro</h1>
-
+    <div class="container">
+        <h1>Cadastro</h1>
+        <form action="cadastrar_cliente_scriptign.php" method="post" onclick="return validateForm()">
             <span>Nome do usuário</span>
             <input type="text" name="nome" id="nome" required>
 
@@ -24,8 +23,9 @@
             <span>Senha</span>
             <input type="password" name="senha" id="senha" required onkeyup="validatePassword()">
 
-            <span>Confirme sua senha</span>
+            <span>Confirmar Senha</span>
             <input type="password" name="confirma" id="confirma" required onkeyup="validatePassword()">
+            <div id="senha-feedback" style="color: red;"></div> <!-- Mensagem de erro -->
 
             <span>Estado</span>
             <input type="text" name="estado" id="estado" required>
@@ -42,14 +42,12 @@
             <span>Bairro</span>
             <input type="text" name="bairro" id="bairro" required>
 
-            <button type="submit" value="Entrar">Entrar</button>
-
-
-
+            <button type="submit">Entrar</button>
         </form>
-        <button onclick="goBack()">Voltar</button>
+        <a href="index.php" onclick="return confirmBack()"><button>Voltar</button></a>
         <script src="funcoes.js"></script>
     </div>
+
 </body>
 
 </html>

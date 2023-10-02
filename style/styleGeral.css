@@ -6,7 +6,7 @@
 /* Estilo para o corpo da página */
 body {
     font-family: Arial;
-    background-color: #f2f2f2;
+    background-color: #edefef;
     margin: 0;
     padding: 0;
     display: flex;
@@ -29,24 +29,28 @@ input[type="checkbox"] {
 
 input[type="text"],
 input[type="password"],
-input[type="number"] {
+input[type="number"],
+input[type="num"] {
     width: 90%;
     padding: 10px;
-    margin: 10px 0;
-    /* Espaçamento vertical entre os campos */
+    margin: 2% 0;/* Espaçamento vertical entre os campos */    
     border: 1px solid #ccc;
     border-radius: 4px;
+    max-width: 90%;
 }
 
 input:hover[type="text"],
 input:hover[type="password"],
 input:hover[type="number"] {
     background-color: #efecec;
-    
+}
+
+label {
+    display: block;
 }
 
 /* Estilo para o botão de envio */
-button[type="submit"]{
+button[type="submit"] {
     background-color: #007bff;
     color: #ffffff;
     border: none;
@@ -55,15 +59,15 @@ button[type="submit"]{
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold; 
-      
+    font-weight: bold;
+
 }
 
-button:hover[type="submit"]{
+button:hover[type="submit"] {
     background-color: #1887fe;
 }
 
-button{
+button {
     background-color: #ff0000;
     color: #ffffff;
     border: none;
@@ -73,39 +77,31 @@ button{
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-    display:flexbox;     
+    display: flexbox;
 }
 
 button:hover {
     background-color: #fe2718;
 }
 
-/* Estilo para o link "Cadastrar novo cliente" */
-a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-left: 30%;
-}
-
 /* Estilo para o link quando o mouse passa por cima */
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline;    
 }
 
 table {
     border-collapse: collapse;
     width: 80%;
     background-color: #fff;
-    color:#333;    
+    color: #333;
 }
 
 table,
 th,
 td {
     padding: 5%;
-    border: 1px solid #000000; /* Adicione uma borda fina se desejar */    
+    border: 1px solid #000000;
+    /* Adicione uma borda fina se desejar */
 }
 
 th,
@@ -153,44 +149,9 @@ a {
     margin-top: 20px;
     text-decoration: none;
     color: #007bff;
-    font-weight: bold;
+    font-weight: bold;   
 }
 
-/* Estilos para a lista não ordenada (ul) */
-ul {
-    list-style-type: none; /* Remover marcadores de lista */
-    margin: 0;
-    padding: 0;
-}
-
-/* Estilos para cada item de lista (li) */
-ul li {
-    margin-bottom: 5%; /* Espaçamento entre os itens da lista */
-}
-
-/* Estilos para os links (a) */
-ul li a {
-    text-decoration: none; /* Remover sublinhado padrão dos links */
-    color: #007bff; /* Cor do texto dos links */
-    font-weight: bold; /* Texto em negrito */
-    display: block; /* Fazer com que os links ocupem toda a largura do item da lista */
-    width: 50%;
-    padding: 19%; /* Espaçamento interno nos links */
-    border: 1px solid #007bff; /* Adicionar uma borda aos links */
-    border-radius: 5%; /* Cantos arredondados */
-    transition: background-color 0.3s, color 0.3s; /* Efeito de transição suave */
-}
-
-/* Estilos para os links quando o cursor está sobre eles */
-ul li a:hover {
-    text-decoration: none;
-    background-color: #007bff; /* Cor de fundo ao passar o cursor */
-    color: #fff; /* Cor do texto ao passar o cursor */
-}
-
-/* Estilos para o último item da lista (Sair) */
-ul li:last-child a {
-    text-decoration: none;
-    background-color: #1225f5; /* Cor de fundo vermelha para o link Sair */
-    color: #fff; /* Cor do texto branco para o link Sair */
+h1 {
+    margin-bottom: 10%;
 }

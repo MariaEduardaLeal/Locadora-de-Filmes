@@ -53,7 +53,6 @@ function validatePassword() {
     var senhaInput = document.getElementById("senha");
     var confirmaInput = document.getElementById("confirma");
     var senhaFeedback = document.getElementById("senha-feedback");
-    var confirmaFeedback = document.getElementById("confirma-feedback");
 
     var senha = senhaInput.value;
     var confirmaSenha = confirmaInput.value;
@@ -61,27 +60,22 @@ function validatePassword() {
     if (senha === confirmaSenha) {
         senhaInput.style.backgroundColor = "lightgreen";
         confirmaInput.style.backgroundColor = "lightgreen";
-        senhaFeedback.textContent = "";
-        confirmaFeedback.textContent = "";
+        senhaFeedback.textContent = ""; // Limpa a mensagem de erro
     } else {
         senhaInput.style.backgroundColor = "lightcoral";
         confirmaInput.style.backgroundColor = "lightcoral";
         senhaFeedback.textContent = "As senhas não coincidem. Por favor, verifique novamente.";
-        confirmaFeedback.textContent = "As senhas não coincidem. Por favor, verifique novamente.";
     }
 }
 
 function validateForm() {
-    var inputs = document.querySelectorAll("input");
-    var invalidFields = false;
+    var senhaInput = document.getElementById("senha");
+    var confirmaInput = document.getElementById("confirma");
 
-    inputs.forEach(function (input) {
-        if (input.style.backgroundColor === "lightcoral") {
-            invalidFields = true;
-        }
-    });
+    // Validar as senhas novamente antes de enviar o formulário
+    validatePassword();
 
-    if (invalidFields) {
+    if (senhaInput.style.backgroundColor === "lightcoral") {
         return false; // Cancela o envio do formulário
     }
 
@@ -90,7 +84,7 @@ function validateForm() {
 
 function confirmEdit(){
     if (
-        confirm("Ao alterar os dados você não terá mais acesso aos dados antigos. Deseja mesmo continuar com a exclusão?")
+        confirm("Ao alterar os dados você não terá mais acesso aos dados antigos. Deseja mesmo continuar com a edição?")
     ) {
         return true;
     }
@@ -115,8 +109,26 @@ function confirmaExclusao() {
         return false;
     }
 }
+function formatarData(input) {
+    // Obtém o valor inserido pelo usuário
+    var data = input.value;
 
-function formatarData() {
+    // Expressão regular para validar o formato YYYY-MM-DD
+    var regex = /^\d{4}-\d{2}-\d{2}$/;
+
+    // Verifica se a data inserida corresponde ao formato esperado
+    if (regex.test(data)) {
+        // A data já está no formato esperado, não é necessário fazer nada
+    } else {
+        // Caso a data não esteja no formato esperado, você pode exibir uma mensagem de erro ou tomar outra ação adequada.
+        alert('Formato de data inválido. Use o formato YYYY-MM-DD.');
+        // Ou limpar o campo
+        input.value = '';
+    }
+}
+
+
+function formatarDataHora() {
     const dataInput = document.getElementById('data');
     const inputData = dataInput.value.trim();
 
@@ -132,15 +144,32 @@ function formatarData() {
 }
 
 function editarComConfirmacao() {
-    formatarData(); // Chama a primeira função
+    formatarData();
+    formatarDataHora(); // Chama a primeira função
     return confirmEdit(); // Chama a segunda função e retorna o resultado
 }
 
-function goBack() {
-    window.history.back();
+function confirmarExclusao() {
+    var confirmacao = confirm("Ao excluir esse filme, você perderá todas as informações sobre ele e não poderá recuperá-las. Tem certeza que deseja continuar?");
+    
+    if (confirmacao) {
+        return true; // Continua com a exclusão
+    } else {
+        return false; // Cancela a exclusão
+    }
 }
 
-function sair(){
-    window.location.href="sair.php"
-    
+function sair() {
+    window.location.href = "sair.php";
+}
+
+function confirmaExclusaoUsuario() {
+    var confirmacao = confirm("Ao excluir esse usuário todas as informações sobre ele serão apagadas,"+
+                               "incluindo as locações no nome dele que ainda não foram entregues. Tem certeza q"+
+                               "ue gostaria de continuar? Você não terá mais acesso às informações dele depois que a exclusão for finalizada")
+    if (confirmacao) {
+        return true; // Continua com a exclusão
+    } else {
+        return false; // Cancela a exclusão
+    }
 }
