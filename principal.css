@@ -1,0 +1,124 @@
+/* Estilos para a lista não ordenada (ul) */
+ul {
+    list-style-type: none;
+    /* Remover marcadores de lista */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para cada item de lista (li) */
+ul li {
+    margin-bottom: 1rem;
+    /* Espaçamento entre os itens da lista */
+    display: inline-block;
+    /* Alinhar horizontalmente os itens da lista */
+}
+
+/* Estilos para os links (a) */
+ul li a {    
+    color: #007bff;
+    /* Cor do texto dos links */
+    font-weight: bold;
+    /* Texto em negrito */
+    padding: 2rem 5rem;
+    /* Espaçamento interno nos links */
+    border: 1px solid #007bff;
+    /* Adicionar uma borda aos links */
+    border-radius: 5%;
+    /* Cantos arredondados */
+    transition: background-color 0.3s, color 0.3s;
+    /* Efeito de transição suave */
+}
+
+.link {
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+.link1 {
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+.link2{
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+.link3{
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+.link4{
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+.link5{
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 5%;
+    line-height: 2;
+}
+
+/* Estilos para os links quando o cursor está sobre eles */
+ul li a:hover {
+    background-color: #007bff;
+    /* Cor de fundo ao passar o cursor */
+    color: #fff;
+    /* Cor do texto ao passar o cursor */
+    text-decoration: none;/* Remover sublinhado padrão dos links */
+}
+
+.central {
+    display: flex;
+    flex-direction: column;
+    /* Alterar para coluna em telas pequenas */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Centralizar texto */
+}
+
+h1 {
+    font-size: 4rem;
+    /* Usar unidades rem para tamanho de fonte responsivo */
+    margin-top: 1rem;
+    /* Reduzir a margem superior */
+    margin-bottom: 2rem;
+}
+
+a {
+    font-size: 2rem;/* Usar unidades rem para tamanho de fonte responsivo */
+    align-items: center;    
+}
+
+/* Ajustar margem ou espaçamento entre elementos do corpo */
+body {
+    margin: 0;
+    /* Remover margem padrão do corpo */
+    padding: 1rem;
+    /* Adicionar espaçamento entre elementos do corpo */
+}
+
+/* Media query para ajustar o layout em telas pequenas */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    a {
+        font-size: 1rem;
+    }
+}

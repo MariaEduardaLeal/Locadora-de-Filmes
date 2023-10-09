@@ -1,0 +1,38 @@
+.cadastrarResponsivo {
+   width: 100%;
+   /* Use 100% para ocupar a largura total da tela */
+   max-width: 400px;
+   /* Defina uma largura máxima para evitar que a div fique muito larga em telas grandes */
+   max-height: 60%;
+   /* Defina uma altura máxima para evitar que a div fique muito larga em telas grandes */
+   margin: 0 auto;
+   /* Centralize a div horizontalmente */
+   padding: 20px;
+   /* Adicione espaço interno para o conteúdo */
+   box-sizing: border-box;
+   /* Garanta que o padding não aumente a largura total */
+}
+
+/* Estilos para o cabeçalho */
+h1 {
+   text-align: center;
+   /* Centralize o título */
+}
+
+button[type="submit"] {
+   margin-left: 35%;
+   margin-bottom: -10%;
+
+}
+
+button {
+   margin-left: 35%;
+   margin-top: 0%;
+}
+
+@media screen and (max-width: 768px) {
+   .cadastrarResponsivo {
+      width: 90%;
+      /* Reduza a largura da div em telas menores */
+   }
+}

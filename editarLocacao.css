@@ -1,0 +1,29 @@
+  
+  /* Estilo para rótulos (labels) */
+  label {
+    font-weight: bold; /* Deixa o texto em negrito */
+    display: block; /* Faz com que os rótulos ocupem uma linha inteira */
+    margin-bottom: 5px; /* Adiciona espaço entre rótulos */    
+  }   
+  
+  /* Estilo para o campo de seleção gerado pelo PHP */
+  select {
+    width: 100%; /* Ocupa toda a largura disponível no contêiner */
+    padding: 8px; /* Adiciona preenchimento interno */
+    margin-bottom: 10px; /* Adiciona espaço entre campos */
+    border: 1px solid #ccc; /* Adiciona uma borda cinza ao redor do campo */
+    border-radius: 4px; /* Arredonda as bordas do campo */
+  }
+
+  button[type="submit"] {
+    margin-left: 30%;    
+ }
+
+ a button{
+  margin-left: 30%;
+    margin-top: 0%;
+ }
+
+ h1{
+  margin-left: 10%;
+ }

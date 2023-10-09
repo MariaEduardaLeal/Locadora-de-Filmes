@@ -1,0 +1,11 @@
+h1{
+   font-size:300%;
+   margin-bottom: 10%;    
+}
+
+.center-container {
+   display: flex;  
+   justify-content: center;
+   align-items: center;
+   height: 2vh; /* Isso garante que a div ocupe a altura total da tela */
+}
