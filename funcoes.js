@@ -53,7 +53,6 @@ function validatePassword() {
     var senhaInput = document.getElementById("senha");
     var confirmaInput = document.getElementById("confirma");
     var senhaFeedback = document.getElementById("senha-feedback");
-    var confirmaFeedback = document.getElementById("confirma-feedback");
 
     var senha = senhaInput.value;
     var confirmaSenha = confirmaInput.value;
@@ -61,27 +60,22 @@ function validatePassword() {
     if (senha === confirmaSenha) {
         senhaInput.style.backgroundColor = "lightgreen";
         confirmaInput.style.backgroundColor = "lightgreen";
-        senhaFeedback.textContent = "";
-        confirmaFeedback.textContent = "";
+        senhaFeedback.textContent = ""; // Limpa a mensagem de erro
     } else {
         senhaInput.style.backgroundColor = "lightcoral";
         confirmaInput.style.backgroundColor = "lightcoral";
         senhaFeedback.textContent = "As senhas não coincidem. Por favor, verifique novamente.";
-        confirmaFeedback.textContent = "As senhas não coincidem. Por favor, verifique novamente.";
     }
 }
 
 function validateForm() {
-    var inputs = document.querySelectorAll("input");
-    var invalidFields = false;
+    var senhaInput = document.getElementById("senha");
+    var confirmaInput = document.getElementById("confirma");
 
-    inputs.forEach(function (input) {
-        if (input.style.backgroundColor === "lightcoral") {
-            invalidFields = true;
-        }
-    });
+    // Validar as senhas novamente antes de enviar o formulário
+    validatePassword();
 
-    if (invalidFields) {
+    if (senhaInput.style.backgroundColor === "lightcoral") {
         return false; // Cancela o envio do formulário
     }
 

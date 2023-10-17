@@ -13,11 +13,12 @@ if ($id_tipo_usuario == 2) {
 
 verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
-
-$informacao_cliente = "SELECT c.idcliente, c.nomecliente, c.logradouro, c.numlogradouro, c.bairro, c.cidade, c.estado, l.id_tipo_usuario, tu.nome AS nome_tipo_usuario
+verificarStatusUsuario($conexao, $login);
+$informacao_cliente = "SELECT c.idcliente, c.nomecliente, c.logradouro, c.numlogradouro, c.bairro, c.cidade, c.estado, c.status, l.id_tipo_usuario, tu.nome AS nome_tipo_usuario
 FROM cliente c
 LEFT JOIN login l ON c.idcliente = l.idcliente
 LEFT JOIN tipo_usuario tu ON l.id_tipo_usuario = tu.id_tipo_usuario";
+
 
 $resultado = mysqli_query($conexao, $informacao_cliente);
 ?>
@@ -29,10 +30,16 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="style/styleGeral.css">
+    <link rel="stylesheet" href="style/listaClientes.css">
+
 </head>
 
 <body>
-    <h1>Lista de Clientes</h1>
+    <div class="clientes">
+        <h1>Lista de Clientes</h1>
+    </div>
+
     <table border="1">
         <tr>
             <th>ID</th>
@@ -42,12 +49,15 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             <th>Bairro</th>
             <th>Cidade</th>
             <th>Estado</th>
+            <th>Status</th>
+            <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?>
+                <th>Alterar Status do usuário</th>
+            <?php endif; ?>
             <th>Tipo de Usuário</th>
-            <?php if ($id_tipo_usuario == 1) : ?>
+            <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3): ?>
                 <th>Alterar Tipo</th>
             <?php endif; ?>
             <th>Editar Cadastro</th>
-            <th>Deletar Usuário</th>
         </tr>
 
         <?php if ($resultado->num_rows > 0) : ?>
@@ -60,11 +70,26 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                     <td><?= $row["bairro"] ?></td>
                     <td><?= $row["cidade"] ?></td>
                     <td><?= $row["estado"] ?></td>
+                    <td><?= $row["status"] ?></td>
+                    <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?>
+                        <td>
+                            <form action="atualizar_status_cliente.php" method="post">
+                                <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
+                                <input type="hidden" name="tipo_usuario_tabela" value="<?= $row['nome_tipo_usuario'] ?>">
+                                <select name="novo_status_cliente">
+                                    <option value="ativo" <?= $row["status"] == "ativo" ? "selected" : "" ?>>Ativo</option>
+                                    <option value="inativo" <?= $row["status"] == "inativo" ? "selected" : "" ?>>Inativo</option>
+                                </select>
+                                <input type="submit" value="Atualizar">
+                            </form>
+                        </td>
+                    <?php endif; ?>
                     <td><?= $row["nome_tipo_usuario"] ?></td>
-                    <?php if ($id_tipo_usuario == 1) : ?>
+                    <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?>
                         <td>
                             <form action="atualizar_tipo_usuario.php" method="post">
                                 <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
+                                <input type="hidden" name="tipo_usuario_tabela" value="<?= $row['nome_tipo_usuario'] ?>">
                                 <select name="novo_tipo_usuario">
                                     <option value="1">Administrador</option>
                                     <option value="2">Cliente</option>
@@ -88,14 +113,7 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
                             <input type="submit" value="Editar Usuário">
                         </form>
                     </td>
-                    <td>
-                        <form action="deletar_usuario.php" method="post">
-                            <input type="hidden" name="idcliente" value="<?= $row["idcliente"] ?>">
-                            <input type="hidden" name="id_tipo_usuario" value="<?= $id_tipo_usuario ?>">
-                            <input type="hidden" name="tipo_usuario_tabela" value="<?= $row["nome_tipo_usuario"] ?>">
-                            <input type="submit" value="Deletar usuário" onclick="return confirmaExclusaoUsuario()">
-                        </form>
-                    </td>
+
                 </tr>
             <?php endwhile; ?>
         <?php else : ?>
@@ -104,9 +122,11 @@ $resultado = mysqli_query($conexao, $informacao_cliente);
             </tr>
         <?php endif; ?>
     </table>
-    <a href="principal.php">Voltar</a>
+    <div>
+        <a href="principal.php" onclick="return confirmBack()"><button>Voltar</button></a>
+        <script src="funcoes.js"></script>
+    </div>
 
-    <script src="funcoes.js"></script>
 </body>
 
 </html>

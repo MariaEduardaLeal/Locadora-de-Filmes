@@ -13,7 +13,7 @@ if ($id_tipo_usuario == 2) {
 
 verificarEAtualizarStatusPendente($conexao, $login);
 verificarLocacaoPendenteEExibirAlerta($conexao, $login);
-
+verificarStatusUsuario($conexao, $login);
 
 $idcliente = $_POST['idcliente'];
 $nomeCliente = $_POST['nomeCliente'];
@@ -34,29 +34,39 @@ if (!$temPermissaoParaEditar) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cadastro</title>
+    <link rel="stylesheet" href="style/styleGeral.css">
+    <link rel="stylesheet" href="style/editar_cadastro_usuario.css">
+
 </head>
+
 <body>
-    <form action="editar_cadastro_usuario_scripting.php" method="post">
-        <input type="hidden" name="idcliente" value="<?= $idcliente ?>">
-        <label>Nome:</label><br>
-        <input type="text" name="nomeCliente" value="<?= $nomeCliente ?>"><br>
-        <label>Estado:</label><br>
-        <input type="text" name="estado" value="<?= $estado ?>"><br>
-        <label>Cidade:</label><br>
-        <input type="text" name="cidade" value="<?= $cidade ?>"><br>
-        <label>Logradouro:</label><br>
-        <input type="text" name="logradouro" value="<?= $logradouro ?>"><br>
-        <label>Número do logradouro:</label><br>
-        <input type="num" name="numlogradouro" value="<?= $numlogradouto ?>"><br>
-        <label>Bairro:</label><br>
-        <input type="text" name="bairro" value="<?= $bairro ?>"><br>
-        <input type="submit" value="Editar" onclick="return confirmEdit()">
-    </form>
-    <a href="lista_clientes.php" onclick="return confirmBack()">Voltar</a>
-    <script src="funcoes.js"></script>
+    <div>
+        <form action="editar_cadastro_usuario_scripting.php" method="post">
+            <h1>Editar cadastro</h1>
+            <input type="hidden" name="idcliente" value="<?= $idcliente ?>">
+            <label>Nome:</label>
+            <input type="text" name="nomeCliente" value="<?= $nomeCliente ?>" readonly>
+            <label>Estado:</label>
+            <input type="text" name="estado" value="<?= $estado ?>">
+            <label>Cidade:</label>
+            <input type="text" name="cidade" value="<?= $cidade ?>">
+            <label>Logradouro:</label>
+            <input type="text" name="logradouro" value="<?= $logradouro ?>">
+            <label>Número do logradouro:</label>
+            <input type="num" name="numlogradouro" value="<?= $numlogradouto ?>">
+            <label>Bairro:</label>
+            <input type="text" name="bairro" value="<?= $bairro ?>">
+            <button type="submit" onclick="return confirmEdit()">Editar</button>
+        </form>
+        <a href="lista_clientes.php" onclick="return confirmBack()"><button>Voltar</button></a>
+        <script src="funcoes.js"></script>
+    </div>
+
 </body>
+
 </html>

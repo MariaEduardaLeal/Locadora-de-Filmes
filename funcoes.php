@@ -226,5 +226,28 @@ function verificarPermissaoParaEditar($id_tipo_usuario, $tipo_usuario_tabela) {
     return false;
 }
 
+function verificarStatusUsuario($conexao, $login)
+{
+    // Consulta SQL para obter o status do usuário com base no login
+    $consultaStatus = "SELECT c.status
+                       FROM cliente c
+                       INNER JOIN login l ON c.idcliente = l.idcliente
+                       WHERE l.login = '$login'";
+
+    $resultado = mysqli_query($conexao, $consultaStatus);
+
+    if ($resultado && $resultado->num_rows > 0) {
+        $row = $resultado->fetch_assoc();
+        $status = $row['status'];
+
+        if ($status === 'inativo') {
+            // Se o status for "inativo", redirecione o usuário ou execute a lógica desejada.
+            echo "<script>alert('Sua conta está inativa. Entre em contato com o suporte.')</script>";
+            echo "<script>window.location.href='sair.php'</script>"; // Redireciona o usuário para a página de logout ou outra página adequada.
+            exit;
+        }
+    }
+}
+
 
 ?>

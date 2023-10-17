@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dddfe1;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;    
+}
+
+.box-one {    
+    padding: 10%;
+    border-radius: 10px;      
+}
+
+#formulario_de_cadastro {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 20rem;
+    padding: 5%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;    
+}
+
+button:hover {
+    background-color: #fe2718;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 2%;
+}
+
+button[type="submit"]:hover {
+    background-color: #1887fe;
+}

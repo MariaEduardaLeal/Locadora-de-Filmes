@@ -33,8 +33,8 @@ if ($quant_login > 0) {
 
         if (mysqli_num_rows($query_ver_primeiro_usuario) == 0) {
             // Insira os dados na tabela "cliente"
-            $inserirCliente = "INSERT INTO cliente (nomecliente, logradouro, numlogradouro, bairro, cidade, estado) 
-            VALUES ('$nome', '$logradouro', '$numero', '$bairro', '$cidade', '$estado')";
+            $inserirCliente = "INSERT INTO cliente (nomecliente, logradouro, numlogradouro, bairro, cidade, estado, status) 
+            VALUES ('$nome', '$logradouro', '$numero', '$bairro', '$cidade', '$estado', 'ativo')";
             $queryInserirCliente = mysqli_query($conexao, $inserirCliente);
 
             // Obtenha o ID do cliente recém-inserido
@@ -44,8 +44,8 @@ if ($quant_login > 0) {
             $inserirLogin = "INSERT INTO login (login, senha, idcliente, id_tipo_usuario) VALUES ('$login', '$senha', '$idCliente', 1)";
         } else {
             // Caso contrário, insira-o como cliente (id_tipo_usuario = 2)
-            $inserirCliente = "INSERT INTO cliente (nomecliente, logradouro, numlogradouro, bairro, cidade, estado) 
-                VALUES ('$nome', '$logradouro', '$numero', '$bairro', '$cidade', '$estado')";
+            $inserirCliente = "INSERT INTO cliente (nomecliente, logradouro, numlogradouro, bairro, cidade, estado, status) 
+                VALUES ('$nome', '$logradouro', '$numero', '$bairro', '$cidade', '$estado', 'ativo')";
             $queryInserirCliente = mysqli_query($conexao, $inserirCliente);
 
             if (!$queryInserirCliente) {

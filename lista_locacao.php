@@ -34,10 +34,12 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Locação</title>
+    <link rel="stylesheet" href="style/styleGeral.css">
+    <link rel="stylesheet" href="style/listaLocacao.css">
 </head>
 
 <body>
-    <h1>Lista de locações</h1>
+    <div class="locacoes"><h1>Lista de locações</h1></div>
     <table border="1">
         <tr>
             <th style="display: none;">ID Aluguel</th>
@@ -49,7 +51,6 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
             <?php if ($id_tipo_usuario == 1 || $id_tipo_usuario == 3) : ?> <!--Funções do ADM-->
                 <th>Mudar Status</th>
                 <th>Editar Locação</th>
-                <th>Excluir Locação</th>
             <?php endif; ?>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($resultado)) : ?>
@@ -91,21 +92,14 @@ while ($statusRow = mysqli_fetch_assoc($resultadoStatus)) {
                         </form>
                     </td>
 
-                    <td>
-                        <form action="excluir_locacao.php" method="post">
-                            <input type="hidden" name="idaluguel" value="<?= $row['idaluguel'] ?>">
-                            <input type="hidden" name="idfilme" value="<?= $row['idfilme'] ?>">
-                            <input type="submit" value="Excluir Locação" onclick="return confirmaExclusao()">
-                        </form>
-                    </td>
-
-
                 <?php endif; ?>
             </tr>
         <?php endwhile ?>
     </table>
-    <a href="principal.php">Voltar</a>
-    <script src="funcoes.js"></script>
+    <div>
+    <a href="principal.php" onclick="return confirmBack()"><button>Voltar</button></a>
+        <script src="funcoes.js"></script>
+    </div>
 </body>
 
 </html>
