@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar cliente</title>
-    <script type="text/javascript" src="funcoes.js"></script>    
+    <script type="text/javascript" src="funcoes.js"></script>
     <link rel="stylesheet" href="style/cadastrarCliente.css">
-    
+
 </head>
 
 <body>
@@ -56,26 +56,28 @@
                     </div>
 
                     <div class="form-control">
-                    <label for="numero">Número</label>
-                    <input type="number" name="numero" id="numero" required>
+                        <label for="numero">Número</label>
+                        <input type="number" name="numero" id="numero" required>
                     </div>
 
                     <div class="form-control">
-                    <label for="bairro">Bairro</label>
-                    <input type="text" name="bairro" id="bairro" required>
+                        <label for="bairro">Bairro</label>
+                        <input type="text" name="bairro" id="bairro" required>
                     </div><br>
-                    
-                </form>                
 
-                <div class="button-container">
-                <button type="submit">Cadastrar</button><br>
-                <a href="index.php" onclick="return confirmBack()"><button>Voltar</button></a>                
-                </div>
-                
+                    <div class="button-container">
+                        <button type="submit">Cadastrar</button><br>
+                        <a href="index.php" onclick="return confirmBack()"><button>Voltar</button></a>
+                    </div>
+
+                </form>
+
+
+
             </div>
         </div>
     </div>
     <script src="funcoes.js"></script>
 </body>
 
-</html>  
+</html>
