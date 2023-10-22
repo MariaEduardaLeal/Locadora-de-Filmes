@@ -67,13 +67,14 @@
 
                     <div class="button-container">
                         <button type="submit">Cadastrar</button><br>
-                        <a href="index.php" onclick="return confirmBack()"><button>Voltar</button></a>
+
                     </div>
 
                 </form>
 
-
-
+                <div class="button-container">
+                    <a href="index.php" onclick="return confirmBack()"><button>Voltar</button></a>
+                </div>
             </div>
         </div>
     </div>

@@ -34,8 +34,8 @@ button[type="submit"] {
 }
 
 button {
-   margin-top: -10%;
+   margin-top: 15%;
    /* Define a margem inferior como 0 e remove a margem superior e esquerda */
-   margin-left: 34%;
+   margin-left: 33%;
 }
 
