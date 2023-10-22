@@ -34,7 +34,9 @@ body {
 .form-control {
     margin-bottom: 20px;
 }
-
+h1{
+    text-align: center;
+}
 label {
     display: block;
     margin-bottom: 5px;

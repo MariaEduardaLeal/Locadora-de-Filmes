@@ -16,8 +16,10 @@
         <div class="box-one">
 
             <div id="formulario_de_cadastro">
+                
 
                 <form action="cadastrar_cliente_scriptign.php" method="post" onclick="return validateForm()">
+                    <h1>Cadastro</h1><br>
 
                     <div class="form-control">
                         <label for="nome">Nome do usuário</label>
