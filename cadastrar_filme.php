@@ -41,9 +41,9 @@ if ($id_tipo_usuario == 2) {
             <span>Unidades Disponíveis</span>
             <input type="number" name="unidades_disponiveis" id="unidades_disponiveis"><br>
 
-            <div class="button-container">
+            
                 <button type="submit">Cadastrar</button>
-            </div>
+            
 
 
         </form>
